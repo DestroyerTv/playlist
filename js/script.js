@@ -14,7 +14,53 @@
 // *************************** YOUR CODE BELOW *******************************
 //******************TEST EARLY AND OFTEN USING console.log() ******************
 //****************** SERIOUSLY TEST USING console.log()!!! ******************
+$( document ).ready(function() {
+    clearList();
+    displayList();
 
+    $(‘.addSong’).click(function(){
+        addSong();
+        clearList();
+        displayList();
+    });
+
+});
+
+function displayList(){
+    for (var i = 0; i < myPlayList.length; i++){
+
+        $(“.songs”).append(myPlayList[i].title);
+        $(“.songs”).append(myPlayList[i].artist);
+        $(“.songs”).append(“<a href=” + myPlayList[i].mp3Url + “> Play Song</a>“);
+        $(“.songs”).append(“<img src=” + myPlayList[i].imageUrl + “>”);
+        $(“.songs”).append(“<br>“);
+
+    } 
+}
+
+function clearList(){
+ 
+ $(“.songs”).empty();
+ 
+}
+
+function addSong(){
+    var title = $(‘.title’).val();
+    var artist = $(‘.artist’).val();
+    var mp3Url = $(‘.mp3Url’).val();
+    var imageUrl = $(‘.imageUrl’).val();
+
+    var newSong = {
+        title : title,
+        artist : artist,
+        mp3Url : mp3Url,
+        imageUrl : imageUrl,
+    }
+
+    myPlayList.push(newSong);
+
+}
+adv_playlist_sol_3/js/script.js
 // Songs
 var mySong = {
 	"title":"24K Magic",
